@@ -21,6 +21,8 @@ namespace EmployeeTest.Pages
     /// </summary>
     public partial class EmployeesListPage : Page
     {
+
+
         public EmployeesListPage()
         {
             InitializeComponent();
@@ -28,5 +30,10 @@ namespace EmployeeTest.Pages
         }
 
 
+        private void ShowInfo_Click(object sender, RoutedEventArgs e)
+        {
+            var showNextPage = (sender as Button).DataContext as Employee;
+            Navigation.Update(new EmployeeInfoPage(showNextPage));
+        }
     }
 }

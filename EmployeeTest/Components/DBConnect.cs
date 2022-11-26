@@ -8,6 +8,6 @@ namespace EmployeeTest.Components
 {
     public class DBConnect
     {
-        public static EmployeeDBEntities db = new EmployeeDBEntities();
+        public static DBEmployeesEntities db = new DBEmployeesEntities();
     }
 }

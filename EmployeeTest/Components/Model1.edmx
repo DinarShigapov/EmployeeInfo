@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище EmployeeDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище DBEmployeesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departament">
           <Key>
             <PropertyRef Name="Id" />
@@ -115,7 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище EmployeeDBModelContainer">
+        <EntityContainer Name="Хранилище DBEmployeesModelContainer">
           <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prefix" EntityType="Self.Prefix" Schema="dbo" store:Type="Tables" />
@@ -143,7 +143,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EmployeeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBEmployeesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Departament">
           <Key>
             <PropertyRef Name="Id" />
@@ -262,7 +262,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EmployeeDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBEmployeesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departament" EntityType="Self.Departament" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="Prefix" EntityType="Self.Prefix" />
@@ -291,9 +291,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище EmployeeDBModelContainer" CdmEntityContainer="EmployeeDBEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DBEmployeesModelContainer" CdmEntityContainer="DBEmployeesEntities">
           <EntitySetMapping Name="Departament">
-            <EntityTypeMapping TypeName="EmployeeDBModel.Departament">
+            <EntityTypeMapping TypeName="DBEmployeesModel.Departament">
               <MappingFragment StoreEntitySet="Departament">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DepName" ColumnName="DepName" />
@@ -301,7 +301,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="EmployeeDBModel.Employee">
+            <EntityTypeMapping TypeName="DBEmployeesModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -326,7 +326,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Prefix">
-            <EntityTypeMapping TypeName="EmployeeDBModel.Prefix">
+            <EntityTypeMapping TypeName="DBEmployeesModel.Prefix">
               <MappingFragment StoreEntitySet="Prefix">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PrefixName" ColumnName="PrefixName" />
@@ -334,7 +334,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="State">
-            <EntityTypeMapping TypeName="EmployeeDBModel.State">
+            <EntityTypeMapping TypeName="DBEmployeesModel.State">
               <MappingFragment StoreEntitySet="State">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FIPSCode" ColumnName="FIPSCode" />
@@ -342,7 +342,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="EmployeeDBModel.Status">
+            <EntityTypeMapping TypeName="DBEmployeesModel.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="StatName" ColumnName="StatName" />
@@ -350,7 +350,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="EmployeeDBModel.sysdiagrams">
+            <EntityTypeMapping TypeName="DBEmployeesModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />

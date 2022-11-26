@@ -1,4 +1,5 @@
-﻿using EmployeeTest.Pages;
+﻿using EmployeeTest.Components;
+using EmployeeTest.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace EmployeeTest
         public MainWindow()
         {
             InitializeComponent();
-            MyFrame.Navigate(new EmployeesListPage());
+            Navigation.main = this;
+            Navigation.Update(new EmployeesListPage());
         }
     }
 }

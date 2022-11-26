@@ -18,6 +18,8 @@
         <Style TargetType="ComboBox">
             <Setter Property="Height" Value="28"/>
             <Setter Property="Width" Value="170"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="IsEditable" Value="True"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -54,7 +56,7 @@
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="46*"/>
             </Grid.RowDefinitions>
-            <Button Background="Transparent" BorderThickness="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" >
+            <Button x:Name="BackBtn" Background="Transparent" BorderThickness="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" Click="BackBtn_Click" >
                 <Image Source="/Resources/BackBtnImg.png" />
             </Button>
         </Grid>
@@ -79,19 +81,19 @@
                         <StackPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="FIRST NAME"/>
-                                <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+                                <TextBox x:Name="txtFirstName" DockPanel.Dock="Right" HorizontalAlignment="Right" Text="{Binding FirstName}"/>
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="LAST NAME"/>
-                                <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <TextBox x:Name="txtLastName" DockPanel.Dock="Right" HorizontalAlignment="Right" Text="{Binding LastName}" />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="PREFIX"/>
-                                <ComboBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <ComboBox x:Name="PrefixCb" DisplayMemberPath = "PrefixName" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="TITLE"/>
-                                <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <TextBox x:Name="txtTitle" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                         </StackPanel>
                     </DockPanel>
@@ -99,19 +101,19 @@
                         <StackPanel VerticalAlignment="Bottom">
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="ADDRESS"/>
-                                <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <TextBox x:Name="txtAddress" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="CITY"/>
-                                <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <TextBox x:Name="txtCity" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="STATE"/>
-                                <ComboBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <ComboBox x:Name="StateCb" DisplayMemberPath = "FIPSCode" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="ZIPCODE"/>
-                                <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <TextBox x:Name="txtZipcode" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                         </StackPanel>
                     </DockPanel>
@@ -141,11 +143,11 @@
                         <StackPanel VerticalAlignment="Bottom">
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="DEPARTMENT"/>
-                                <ComboBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <ComboBox x:Name="DepartmentCb" DisplayMemberPath = "DepName" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="STATUS"/>
-                                <ComboBox DockPanel.Dock="Right" HorizontalAlignment="Right" />
+                                <ComboBox x:Name="StatusCb" DisplayMemberPath = "StatName" DockPanel.Dock="Right" HorizontalAlignment="Right" />
                             </DockPanel>
                             <DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="HIDE DATE"/>
@@ -187,7 +189,7 @@
             <Rectangle Fill="#FF3C3C3C"/>
             <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Center">
                 <DockPanel Margin="10 0 10 0">
-                    <Button DockPanel.Dock="Top" Margin="0 10" BorderThickness="0" Background="Transparent">
+                    <Button x:Name="SaveBtn" DockPanel.Dock="Top" Margin="0 10" BorderThickness="0" Background="Transparent" Click="SaveBtn_Click" >
                         <Image Width="30" Source="/Resources/disk2.png"  />
                     </Button>
                     <TextBlock Foreground="White" HorizontalAlignment="Center" Text="Save"/>

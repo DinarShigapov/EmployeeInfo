@@ -22,12 +22,11 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="FontSize" Value="10"/>
-            
         </Style>
     </Page.Resources>
     
     <Grid>
-        <ListView x:Name="EmployeeList" d:ItemsSource="{d:SampleData ItemCount=12}">
+        <ListView x:Name="EmployeeList"  d:ItemsSource="{d:SampleData ItemCount=12}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Margin="20" HorizontalAlignment="Center" Width="1178" />
@@ -35,7 +34,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="10" BorderThickness="1" Width="277" Height="173">
+                    <Border  Padding="10" BorderThickness="1" Width="277" Height="173">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="Black" Opacity="0.1"/>
                         </Border.BorderBrush>
@@ -44,8 +43,10 @@
                                 <TextBlock FontWeight="Bold" Text="{Binding StrFullName}"/>
                             </StackPanel>
                             <StackPanel Margin="0 20" Orientation="Horizontal">
-                                <Border BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Left">
-                                    <Image Source="/Resources/ava2.png" Width="80"/>
+                                <Border BorderThickness="0.5" Width="80" BorderBrush="Black" HorizontalAlignment="Left">
+                                    <Button Background="Transparent" Click="ShowInfo_Click">
+                                        <Image Source="/Resources/ava2.png"/>
+                                    </Button>
                                 </Border>
                                 <StackPanel Margin="10 0 0 0" Orientation="Vertical" Width="162">
                                     <StackPanel Margin="0 0 0 8" Orientation="Vertical">
@@ -54,7 +55,7 @@
                                     </StackPanel>
                                     <StackPanel Margin="0 0 0 8" Orientation="Vertical">
                                         <TextBlock Style="{StaticResource ColorOp}" Text="EMAIL"/>
-                                        <TextBlock FontSize="9" Text="{Binding Email}"/>
+                                        <TextBlock FontSize="9" Text="{Binding StrEmail}"/>
                                     </StackPanel>
                                     <StackPanel Margin="0 0 0 8" Orientation="Vertical">
                                         <TextBlock Style="{StaticResource ColorOp}" Text="PHONE"/>

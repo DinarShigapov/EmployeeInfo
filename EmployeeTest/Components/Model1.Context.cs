@@ -13,10 +13,10 @@ namespace EmployeeTest.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EmployeeDBEntities : DbContext
+    public partial class DBEmployeesEntities : DbContext
     {
-        public EmployeeDBEntities()
-            : base("name=EmployeeDBEntities")
+        public DBEmployeesEntities()
+            : base("name=DBEmployeesEntities")
         {
         }
     

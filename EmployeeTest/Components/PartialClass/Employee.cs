@@ -13,7 +13,11 @@ namespace EmployeeTest.Components
         {
             get 
             {
-                return $"{LastName} {FirstName}";
+                if (FirstName == null || LastName == null)
+                    return "Не указано";
+                else
+                    return $"{LastName} {FirstName}";
+
             }
         }
 
@@ -21,8 +25,34 @@ namespace EmployeeTest.Components
         {
             get
             {
-                return $"{Address}, {City}, {State} {Zipcode}";
+                if (Address == null)
+                    return "Не указано";
+                else
+                    return $"{Address}, {City}, {State} {Zipcode}";
             }
         }
+
+        public string StrEmail
+        {
+            get
+            {
+                if (Email == null)
+                    return "Не указано";
+                else
+                    return $"{Email}";
+            }
+        }
+
+        public string StrPhone
+        {
+            get
+            {
+                if (MobilePhone == null)
+                    return "Не указано";
+                else
+                    return $"{MobilePhone}";
+            }
+        }
+
     }
 }
