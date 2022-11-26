@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeTest.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace EmployeeTest.Pages
         public EmployeesListPage()
         {
             InitializeComponent();
+            EmployeeList.ItemsSource = DBConnect.db.Employee.ToList();
         }
+
+
     }
 }

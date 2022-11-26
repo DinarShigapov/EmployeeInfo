@@ -25,7 +25,7 @@ namespace EmployeeTest
         public MainWindow()
         {
             InitializeComponent();
-            MyFrame.Navigate(new EmployeeInfoPage());
+            MyFrame.Navigate(new EmployeesListPage());
         }
     }
 }

@@ -8,11 +8,29 @@
       d:DesignHeight="600" d:DesignWidth="1200"
       Title="EmployeesListPage">
 
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="9"/> 
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ColorOp">
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="Black" Opacity="0.7"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="10"/>
+            
+        </Style>
+    </Page.Resources>
+    
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=12}">
+        <ListView x:Name="EmployeeList" d:ItemsSource="{d:SampleData ItemCount=12}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="1178" />
+                    <WrapPanel Margin="20" HorizontalAlignment="Center" Width="1178" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
@@ -23,20 +41,24 @@
                         </Border.BorderBrush>
                         <StackPanel Orientation="Vertical">
                             <StackPanel>
-                                <TextBlock FontWeight="Bold" Text="Brad Farkus"/>
+                                <TextBlock FontWeight="Bold" Text="{Binding StrFullName}"/>
                             </StackPanel>
                             <StackPanel Margin="0 20" Orientation="Horizontal">
-                                <Border HorizontalAlignment="Left">
+                                <Border BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Left">
                                     <Image Source="/Resources/ava2.png" Width="80"/>
                                 </Border>
-                                <StackPanel Orientation="Vertical"> 
-                                    <StackPanel Width="162">
-                                        <Label Content="ADDRESS"/>
-                                        <TextBlock TextWrapping="Wrap" Text="1234 wWFDS SADDASD"/>
+                                <StackPanel Margin="10 0 0 0" Orientation="Vertical" Width="162">
+                                    <StackPanel Margin="0 0 0 8" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource ColorOp}" Text="ADDRESS"/>
+                                        <TextBlock FontSize="9" Text="{Binding StrFullAddress}"/>
                                     </StackPanel>
-                                    <StackPanel Width="162">
-                                        <Label Content="ADDRESS"/>
-                                        <TextBlock TextWrapping="Wrap" Text="1234 wWFDS SADDASD"/>
+                                    <StackPanel Margin="0 0 0 8" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource ColorOp}" Text="EMAIL"/>
+                                        <TextBlock FontSize="9" Text="{Binding Email}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 0 0 8" Orientation="Vertical">
+                                        <TextBlock Style="{StaticResource ColorOp}" Text="PHONE"/>
+                                        <TextBlock FontSize="9" Text="{Binding MobilePhone}"/>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
