@@ -1,7 +1,9 @@
 ﻿using EmployeeTest.Components;
 using Microsoft.SqlServer.Server;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,22 +56,49 @@ namespace EmployeeTest.Pages
         {
             try
             {
-                employee.FirstName = txtFirstName.Text;
-                employee.LastName = txtLastName.Text;
                 employee.PrefixId = PrefixCb.SelectedIndex + 1;
-                employee.Title = txtTitle.Text;
+                employee.StateId = StateCb.SelectedIndex + 1;
+                employee.StatusId = StatusCb.SelectedIndex + 1;
+                employee.DepartmentId = DepartmentCb.SelectedIndex + 1;
                 DBConnect.db.SaveChanges();
             }
             catch (Exception)
             {
-                MessageBox.Show("Произошла ошибка", "Внимание");
+                MessageBox.Show($"Произошла ошибка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            finally {}
+            finally 
+            {
+            }
+
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             Navigation.Update(new EmployeesListPage());
+        }
+
+        private void AddImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "*.png|*.png|*.jpg|*.jpg|*.jpeg|*.jpeg"
+            };
+
+            if (openFileDialog.ShowDialog().GetValueOrDefault())
+            {
+                employee.MainPhoto = File.ReadAllBytes(openFileDialog.FileName);
+                EmployeeImg.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
+        }
+
+        private void DateFormat_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            txtHideDate.MaxLength = 10;
+
+            if (!(Char.IsDigit(e.Text, 0) || (e.Text == "/") && (!txtHideDate.Text.Contains("//") && txtHideDate.Text.Length != 0)))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

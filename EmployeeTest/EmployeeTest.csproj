@@ -173,6 +173,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\unknown2.png" />
+    <Resource Include="Resources\unknown.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\BackBtnImg.png" />

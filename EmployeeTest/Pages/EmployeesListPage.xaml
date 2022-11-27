@@ -10,10 +10,57 @@
 
 
     <Page.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="5 0 5 5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="#FFDEDEDE" Opacity="0.1"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <SolidColorBrush Color="Black" Opacity="0.5"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="FontFamily" Value="Bahnschrift Light"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5 0 0 0"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="9"/> 
+            <Setter Property="FontSize" Value="9"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="ColorOp">
             <Setter Property="Foreground">
@@ -24,17 +71,17 @@
             <Setter Property="FontSize" Value="10"/>
         </Style>
     </Page.Resources>
-    
+
     <Grid>
-        <ListView x:Name="EmployeeList"  d:ItemsSource="{d:SampleData ItemCount=12}">
-            <ListView.ItemsPanel>
+        <ListBox x:Name="EmployeeList" BorderThickness="0" HorizontalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=12}">
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel Margin="20" HorizontalAlignment="Center" Width="1178" />
+                    <WrapPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Center" Width="1178" />
                 </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border  Padding="10" BorderThickness="1" Width="277" Height="173">
+                    <Border Padding="10" BorderThickness="1" Width="277" Height="173">
                         <Border.BorderBrush>
                             <SolidColorBrush Color="Black" Opacity="0.1"/>
                         </Border.BorderBrush>
@@ -43,15 +90,24 @@
                                 <TextBlock FontWeight="Bold" Text="{Binding StrFullName}"/>
                             </StackPanel>
                             <StackPanel Margin="0 20" Orientation="Horizontal">
-                                <Border BorderThickness="0.5" Width="80" BorderBrush="Black" HorizontalAlignment="Left">
-                                    <Button Background="Transparent" Click="ShowInfo_Click">
-                                        <Image Source="/Resources/ava2.png"/>
-                                    </Button>
+                                <Border VerticalAlignment="Top" BorderThickness="1" Width="80" Height="100" HorizontalAlignment="Left">
+                                    <Border.BorderBrush>
+                                        <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                    </Border.BorderBrush>
+                                    <Grid>
+                                        <Grid Margin="2">
+                                            <Image RenderOptions.BitmapScalingMode="HighQuality" Visibility="{Binding MainPhotoVis}" Source="/Resources/unknown2.png"/>
+                                            <Image Stretch="Uniform" Source="{Binding MainPhoto}"/>
+                                        </Grid>
+                                        <Button Click="ShowInfo_Click">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="ВОЙТИ"/>
+                                        </Button>
+                                    </Grid>
                                 </Border>
                                 <StackPanel Margin="10 0 0 0" Orientation="Vertical" Width="162">
                                     <StackPanel Margin="0 0 0 8" Orientation="Vertical">
                                         <TextBlock Style="{StaticResource ColorOp}" Text="ADDRESS"/>
-                                        <TextBlock FontSize="9" Text="{Binding StrFullAddress}"/>
+                                        <TextBlock TextWrapping="Wrap" FontSize="9" Text="{Binding StrFullAddress}"/>
                                     </StackPanel>
                                     <StackPanel Margin="0 0 0 8" Orientation="Vertical">
                                         <TextBlock Style="{StaticResource ColorOp}" Text="EMAIL"/>
@@ -66,7 +122,7 @@
                         </StackPanel>
                     </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>
