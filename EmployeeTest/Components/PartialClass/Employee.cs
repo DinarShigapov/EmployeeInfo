@@ -65,8 +65,7 @@ namespace EmployeeTest.Components
         {
             get
             {
-
-                if (MainPhoto.Length != 0)
+                if (MainPhoto.Length != 0) 
                     return Visibility.Hidden;
                 else
                     return Visibility.Visible;

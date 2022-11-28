@@ -35,5 +35,10 @@ namespace EmployeeTest.Pages
             var showNextPage = (sender as Button).DataContext as Employee;
             Navigation.Update(new EmployeeInfoPage(showNextPage));
         }
+
+        private void AddNewEmp_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Update(new EmployeeInfoPage(new Employee()));
+        }
     }
 }

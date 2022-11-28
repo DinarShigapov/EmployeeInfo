@@ -9,6 +9,22 @@
       Title="EmployeeInfoPage">
 
     <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Margin" Value="0 -4" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="28"/>
             <Setter Property="Width" Value="170"/>
@@ -93,12 +109,11 @@
                     <ColumnDefinition Width="290*"/>
                     <ColumnDefinition Width="230*"/>
                 </Grid.ColumnDefinitions>
-
                 <Button x:Name="AddImageBtn" Background="Transparent" BorderThickness="0" Content="Добавить Фото" Click="AddImageBtn_Click" Visibility="{Binding VisibilityBtn}" />
-
                 <Border BorderBrush="Black" BorderThickness="1">
                     <Image x:Name="EmployeeImg" Margin="1, 1, 1, 1" Source="{Binding MainPhoto}"/>
                 </Border>
+ 
 
                 <DockPanel Grid.Column="1" Margin="5,0,5,0">
                     <DockPanel DockPanel.Dock="Top">
@@ -219,10 +234,10 @@
                     <TextBlock Foreground="White" HorizontalAlignment="Center" Text="Save"/>
                 </DockPanel>
                 <DockPanel Margin="10 0 10 0">
-                    <Button DockPanel.Dock="Top" Margin="0 10" BorderThickness="0" Background="Transparent">
+                    <Button DockPanel.Dock="Top" Margin="0 10" BorderThickness="0" Background="Transparent" Click="DeleteImgBtn_Click">
                         <Image Width="30" Source="/Resources/close.png"  />
                     </Button>
-                    <TextBlock Foreground="White" HorizontalAlignment="Center" Text="Cancel"/>
+                    <TextBlock Foreground="White" HorizontalAlignment="Center" Text="Delete Img"/>
                 </DockPanel>
                 <Border BorderThickness="0.5 0 0.5 0" Padding="10 0 10 0" Margin="10 0 10 0" BorderBrush="White">
                     <DockPanel Margin="10 0 10 0">

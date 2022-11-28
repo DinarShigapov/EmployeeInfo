@@ -3,6 +3,7 @@ using Microsoft.SqlServer.Server;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,8 @@ namespace EmployeeTest.Pages
         {
             InitializeComponent();
             employee = _employee;
+            if (employee.MainPhoto == null)
+                employee.MainPhoto = new byte[0];
             this.DataContext = employee;
             InitializeComboBox();
 
@@ -60,6 +63,8 @@ namespace EmployeeTest.Pages
                 employee.StateId = StateCb.SelectedIndex + 1;
                 employee.StatusId = StatusCb.SelectedIndex + 1;
                 employee.DepartmentId = DepartmentCb.SelectedIndex + 1;
+                if (employee.Id == 0)
+                    DBConnect.db.Employee.Add(employee);
                 DBConnect.db.SaveChanges();
             }
             catch (Exception)
@@ -68,6 +73,7 @@ namespace EmployeeTest.Pages
             }
             finally 
             {
+                
             }
 
         }
@@ -99,6 +105,18 @@ namespace EmployeeTest.Pages
             {
                 e.Handled = true;
             }
+        }
+
+        private void DeleteImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (employee.MainPhoto.Length != 0)
+            {
+                employee.MainPhoto = new byte[0];
+                DBConnect.db.SaveChanges();
+                Navigation.Update(new EmployeesListPage());
+            }
+            else
+                MessageBox.Show("Фотографии необнаруженно");
         }
     }
 }

@@ -73,7 +73,11 @@
     </Page.Resources>
 
     <Grid>
-        <ListBox x:Name="EmployeeList" BorderThickness="0" HorizontalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=12}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="533*"/>
+            <RowDefinition Height="67*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" x:Name="EmployeeList" BorderThickness="0" HorizontalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=12}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Margin="20" Orientation="Horizontal" HorizontalAlignment="Center" Width="1178" />
@@ -124,5 +128,31 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <Border Grid.Row="1" Width="150" Height="40" BorderThickness="1" BorderBrush="AliceBlue">
+            <Button 
+                Background="#FFD7D7FF" Foreground="White" Click="AddNewEmp_Click">
+                <TextBlock Text="Добавить" VerticalAlignment="Center" FontFamily="Bahnschrift Light Condensed" FontSize="25" HorizontalAlignment="Center"/>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Margin" Value="-3" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+
     </Grid>
 </Page>
