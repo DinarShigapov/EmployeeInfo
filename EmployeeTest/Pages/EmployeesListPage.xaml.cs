@@ -26,7 +26,7 @@ namespace EmployeeTest.Pages
         public EmployeesListPage()
         {
             InitializeComponent();
-            EmployeeList.ItemsSource = DBConnect.db.Employee.ToList();
+            EmployeeList.ItemsSource = DBConnect.db.Employee.ToList().OrderBy(n => n.FirstName);
         }
 
 

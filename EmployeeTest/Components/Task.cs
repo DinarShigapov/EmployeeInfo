@@ -12,12 +12,17 @@ namespace EmployeeTest.Components
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Task
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> AssignedId { get; set; }
+        public Nullable<int> OwnedId { get; set; }
+        public string Subject { get; set; }
+        public Nullable<int> Priority { get; set; }
+        public Nullable<System.DateTime> DueDate { get; set; }
+        public Nullable<int> Complete { get; set; }
+    
+        public virtual Employee Employee { get; set; }
+        public virtual Employee Employee1 { get; set; }
     }
 }

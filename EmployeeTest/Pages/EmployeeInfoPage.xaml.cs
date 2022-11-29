@@ -35,6 +35,7 @@ namespace EmployeeTest.Pages
                 employee.MainPhoto = new byte[0];
             this.DataContext = employee;
             InitializeComboBox();
+            TaskDg.ItemsSource = DBConnect.db.Task.Where(x => x.AssignedId == employee.Id).ToList();
 
         }
 

@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ca3e6a1e634641d1af47fe2341048365" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="DBEmployeesModel.Departament" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+      <Diagram DiagramId="2519bd388cb345a5966255513cd02d71" Name="Diagram1">
+        <EntityTypeShape EntityType="DBEmployeesModel.Departament" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBEmployeesModel.Employee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEmployeesModel.Prefix" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEmployeesModel.State" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEmployeesModel.Status" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBEmployeesModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEmployeesModel.Prefix" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEmployeesModel.State" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEmployeesModel.Status" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEmployeesModel.Task" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="DBEmployeesModel.FK_Employee_Departament" ManuallyRouted="false" />
         <AssociationConnector Association="DBEmployeesModel.FK_Employee_Prefix" ManuallyRouted="false" />
         <AssociationConnector Association="DBEmployeesModel.FK_Employee_State" ManuallyRouted="false" />
         <AssociationConnector Association="DBEmployeesModel.FK_Employee_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="DBEmployeesModel.FK_Task_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DBEmployeesModel.FK_Task_Employee1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

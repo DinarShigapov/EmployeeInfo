@@ -13,10 +13,10 @@ namespace EmployeeTest.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBEmployeesEntities : DbContext
+    public partial class DBEmployeesEntities2 : DbContext
     {
-        public DBEmployeesEntities()
-            : base("name=DBEmployeesEntities")
+        public DBEmployeesEntities2()
+            : base("name=DBEmployeesEntities2")
         {
         }
     
@@ -30,6 +30,6 @@ namespace EmployeeTest.Components
         public virtual DbSet<Prefix> Prefix { get; set; }
         public virtual DbSet<State> State { get; set; }
         public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Task> Task { get; set; }
     }
 }
