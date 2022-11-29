@@ -9,8 +9,35 @@
       Title="EmployeeInfoPage">
 
     <Page.Resources>
-
-
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="BorderThickness" Value="0 0 0 0"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#FFABADB3"/>
+            <Setter Property="VerticalGridLinesBrush" Value="#FFABADB3"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="RowHeight" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Padding" Value="10 0"/>
+            <Setter Property="BorderThickness" Value="0 1 1 0"/>
+            <Setter Property="BorderBrush" Value="#FFABADB3"/>
+            <Setter Property="Background" Value="#FFF6F6F6"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"  HorizontalAlignment="Left"  Margin="10 0 0 0"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="{x:Type ProgressBar}"
             TargetType="{x:Type ProgressBar}">
             <Setter Property="Template">
@@ -20,7 +47,7 @@
                             <Border 
                                 Name="PART_Track" 
                                 Background="Transparent"
-                                BorderThickness="1" />          
+                                BorderThickness="1" />
                             <Border 
                                 Name="PART_Indicator" 
                                 CornerRadius="2" 
@@ -32,7 +59,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -86,12 +112,10 @@
             <RowDefinition Height="216*"/>
             <RowDefinition Height="36*"/>
         </Grid.RowDefinitions>
-
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
             <TextBlock FontSize="20" Text="EMPLOYEE" VerticalAlignment="Center"/>
             <TextBlock Margin="10 0 0 0" Foreground="#FF2F62AC" VerticalAlignment="Center" FontSize="20" Text="{Binding StrFullName}"/>
         </StackPanel>
-        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="41*"/>
@@ -123,9 +147,7 @@
                 <Image RenderOptions.BitmapScalingMode="Fant" Source="/Resources/BackBtnImg.png" />
             </Button>
         </Grid>
-
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-
             <Grid Height="250">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="253*"/>
@@ -137,8 +159,6 @@
                 <Border BorderBrush="Black" BorderThickness="1">
                     <Image x:Name="EmployeeImg" Margin="1, 1, 1, 1" Source="{Binding MainPhoto}"/>
                 </Border>
- 
-
                 <DockPanel Grid.Column="1" Margin="5,0,5,0">
                     <DockPanel DockPanel.Dock="Top">
                         <StackPanel>
@@ -223,23 +243,24 @@
                         </StackPanel>
                     </DockPanel>
                 </DockPanel>
-
                 <Border Grid.Column="3" Padding="1" BorderThickness="1" BorderBrush="Black">
                     <TextBox Text="{Binding Description}" TextWrapping="Wrap" VerticalContentAlignment="Top" BorderThickness="0" VerticalAlignment="Top" Height="238" Width="230" />
                 </Border>
-
             </Grid>
             <Grid Margin="0 10 0 0">
                 <StackPanel>
                     <TextBlock Foreground="Black" Margin="10 0 5 0" FontSize="15" Text="TASKS | NOTES"/>
-                    <DataGrid IsReadOnly="True" x:Name="TaskDg" Height="125" AutoGenerateColumns="False" GridLinesVisibility="Vertical">
+                    <DataGrid 
+                        d:ItemsSource="{d:SampleData ItemCount=1}" 
+                        x:Name="TaskDg" 
+                        Height="142">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="150" Binding="{Binding StrFullNameA}" Header="Assigned"/>
                             <DataGridTextColumn Width="150" Binding="{Binding StrFullNameO}" Header="Owned By"/>
                             <DataGridTextColumn Width="300" Binding="{Binding Subject}" Header="Subject"/>
                             <DataGridTextColumn Width="100" Binding="{Binding Priority}" Header="Priority"/>
                             <DataGridTextColumn Width="100" Binding="{Binding DueDate, StringFormat=dd/MM/yyyy}" Header="Due Date"/>
-                            <DataGridTemplateColumn Width="280" Header="% Complete">
+                            <DataGridTemplateColumn Width="*" Header="% Complete">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -254,7 +275,6 @@
                 </StackPanel>
             </Grid>
             <StackPanel>
-
             </StackPanel>
         </StackPanel>
         <Grid Grid.ColumnSpan="3" Margin="0,4,0,0" Grid.Row="2">
